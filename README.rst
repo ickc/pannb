@@ -42,7 +42,7 @@ These 3 filters are implemented as 3 individual functions, so that you can cherr
 Example
 =======
 
-See ``docs/example.ipynb`` for the input notebook and its `output without the filter <../example/>`__ and `output with the filter <../example-output/>`__.
+See ``docs/example.ipynb`` for the input notebook and its `output without the filter <../example/>`__ and `output with the filter <../example-output/>`__. Note that the output will be correct only if you set ``--ipynb-output=html`` after `this patch is merged <https://github.com/jgm/pandoc/pull/7538>`__.
 
 .. |Documentation Status| image:: https://readthedocs.org/projects/pannb/badge/?version=latest
    :target: https://pannb.readthedocs.io/en/latest/?badge=latest&style=plastic
