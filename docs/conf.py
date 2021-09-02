@@ -16,6 +16,7 @@ extensions = [
     "sphinx.ext.todo",
     "sphinx.ext.viewcode",
     "nbsphinx",
+    "sphinxcontrib.apidoc",
 ]
 source_suffix = ".rst"
 master_doc = "index"
@@ -81,3 +82,8 @@ mathjax3_config = {
         "tags": "ams",
     },
 }
+
+# sphinxcontrib.apidoc
+apidoc_module_dir = "../src/pannb"
+apidoc_separate_modules = True
+apidoc_module_first = True

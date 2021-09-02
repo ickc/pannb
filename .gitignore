@@ -1,5 +1,6 @@
 # jupytext paired
 docs/core.py
+docs/api/
 
 .ipynb_checkpoints/
 runinfo

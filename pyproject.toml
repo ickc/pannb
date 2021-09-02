@@ -60,13 +60,13 @@ pytest-cov = { optional = true, version = "*" }
 # docs
 sphinx = { optional = true, version = "^3.3" }
 sphinx-bootstrap-theme = { optional = true, version = "*" }
+sphinxcontrib-apidoc = { optional = true, version = "*" }
 pantable = { optional = true, version = "^0.14" }
 nbsphinx = { optional = true, version = ">=0.8" }
 ipykernel = { optional = true, version = "*" }
 pandas = { optional = true, version = "*" }
 
 [tool.poetry.dev-dependencies]
-sphinxcontrib-apidoc = "*"
 isort = "*"
 mypy = "*"
 bandit = "*"

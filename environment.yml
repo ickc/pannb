@@ -31,11 +31,11 @@ dependencies:
   # docs:
   - sphinx
   - sphinx_bootstrap_theme
+  - sphinxcontrib-apidoc
   - nbsphinx >=0.8
   - ipykernel
   - pandas
   # dev:
-  - sphinxcontrib-apidoc
   - pantable >=0.14,<0.15
   - isort
   - mypy

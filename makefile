@@ -11,7 +11,7 @@ N_MPI ?= 2
 
 _pandoc = pandoc
 pandocArgs = --toc -M date="`date "+%B %e, %Y"`" --filter=pantable --wrap=none
-RSTs = CHANGELOG.rst README.rst docs/panflute_filter.rst
+RSTs = CHANGELOG.rst README.rst docs/example-output.rst
 
 # Main Targets #################################################################
 
@@ -46,8 +46,8 @@ README.rst: docs/README.md docs/badges.csv
 	$(_pandoc) $(pandocArgs) $(<F) -V title='pantable Documentation' -s -t rst \
 		>> ../$@
 
-docs/panflute_filter.rst: docs/panflute_filter.md
-	pandoc $< -o $@  --filter=pannb
+docs/%-output.rst: docs/%.ipynb
+	PANNBLOGLEVEL=DEBUG pandoc $< -F pannb -s -o $@
 
 %.rst: %.md
 	printf \
