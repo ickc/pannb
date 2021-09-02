@@ -1,0 +1,49 @@
+# this should be very similar to https://github.com/conda-forge/pannb-feedstock/blob/master/recipe/meta.yaml
+# run the following command to create a conda environment that is suitable for testing pannb
+# conda env create -f environment.yml
+# conda activate pannb
+# python -m ipykernel install --user --name pannb --display-name pannb
+# and then run this to install pannb in editable mode
+# make editable
+# update using
+# conda env update --name pannb --file environment.yml --prune
+name: pannb
+channels:
+  - conda-forge
+dependencies:
+  # host:
+  - pip
+  - python >=3.8
+  - poetry >=1,<2
+  # run:
+  - panflute >=2.1,<3
+  # run_constrained:
+  - coloredlogs >=14,<16
+  - pandoc >=2.11.2,<2.15
+  # tests:
+  - coverage
+  - coveralls
+  # - flake8
+  - pytest
+  - pytest-cov
+  # - pytest-parallel
+  # - pytest-xdist
+  # docs:
+  - sphinx
+  - sphinx_bootstrap_theme
+  - nbsphinx >=0.8
+  - ipykernel
+  - pandas
+  # dev:
+  - sphinxcontrib-apidoc
+  - pantable >=0.14,<0.15
+  - isort
+  - mypy
+  - bandit
+  - black
+  - bump2version
+  - ghp-import >=2,<3
+  - nbconvert >=6,<7
+  - pylint
+  - rstcheck
+  - types-pyyaml
