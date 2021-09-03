@@ -10,6 +10,8 @@ from .util import setup_logging
 
 logger = setup_logging()
 
+RAW_TEX_FORMATS = {"latex", "textile", "html", "ipynb"}
+
 
 def convert_jupytext_metadata(raw_block: RawBlock, doc: Doc) -> None:
     """Overwrite doc.metadata by jupytext-style metadata."""
@@ -40,7 +42,10 @@ def convert_raw_block(
     doc: Doc | None = None,
 ):
     if isinstance(element, RawBlock) and element.format != "ipynb":
-        return convert_text(element.text, input_format=element.format)
+        input_format = element.format
+        if input_format in RAW_TEX_FORMATS:
+            input_format += "+raw_tex"
+        return convert_text(element.text, input_format=input_format)
 
 
 def remove_python_codeblock(
