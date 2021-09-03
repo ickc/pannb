@@ -13,12 +13,15 @@ logger = setup_logging()
 RAW_TEX_FORMATS = {"latex", "textile", "html", "ipynb"}
 
 
-def convert_jupytext_metadata(raw_block: RawBlock, doc: Doc) -> None:
+def convert_jupytext_metadata(raw_block: RawBlock, doc: Doc) -> list | None:
     """Overwrite doc.metadata by jupytext-style metadata."""
     # overwrite
     meta = convert_text(raw_block.text, standalone=True)
-    doc._metadata = meta._metadata
-    logger.debug("Overwritten doc metadata by jupytext's: %s", doc.get_metadata())
+    if (metadata := meta._metadata):
+        doc._metadata = metadata
+        logger.debug("Overwritten doc metadata by jupytext's: %s", doc.get_metadata())
+        setattr(doc, "_walk_and_convert_jupytext_metadata_not_done", False)
+        return []
 
 
 def walk_and_convert_jupytext_metadata(
@@ -26,15 +29,16 @@ def walk_and_convert_jupytext_metadata(
     doc: Doc | None = None,
 ):
     """Walk and overwrite doc.metadata by jupytext-style metadata if found."""
+    _walk_and_convert_jupytext_metadata_not_done = getattr(doc, "_walk_and_convert_jupytext_metadata_not_done", True)
     if (
-        doc is not None
+        _walk_and_convert_jupytext_metadata_not_done
+        and doc is not None
         and isinstance(div := element, Div)
         and len(div.content) == 1
         and isinstance((raw_block := div.content[0]), RawBlock)
         and raw_block.format == "ipynb"
     ):
-        convert_jupytext_metadata(raw_block, doc)
-        return []
+        return convert_jupytext_metadata(raw_block, doc)
 
 
 def convert_raw_block(
