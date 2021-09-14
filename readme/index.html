@@ -3,14 +3,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>pannb—pandoc filter for ipynb &#8212; pannb 0.1.0 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/ickc/markdown-latex-css/css/_table.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/ickc/markdown-latex-css/fonts/fonts.min.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -126,11 +125,11 @@
   <div class="row">
     <div class="body col-md-12 content" role="main">
       
-  <section id="pannbpandoc-filter-for-ipynb">
+  <div class="section" id="pannbpandoc-filter-for-ipynb">
 <h1><a class="toc-backref" href="#id1">pannb—pandoc filter for ipynb</a><a class="headerlink" href="#pannbpandoc-filter-for-ipynb" title="Permalink to this headline">¶</a></h1>
 <dl class="field-list simple">
 <dt class="field-odd">Date</dt>
-<dd class="field-odd"><p>September 2, 2021</p>
+<dd class="field-odd"><p>September 14, 2021</p>
 </dd>
 </dl>
 <div class="contents topic" id="contents">
@@ -171,7 +170,7 @@
 </tr>
 </tbody>
 </table>
-<section id="introduction">
+<div class="section" id="introduction">
 <h2><a class="toc-backref" href="#id2">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>Pandoc supports ipynb format. What this does is add support of</p>
 <ol class="arabic simple">
@@ -184,12 +183,12 @@
 </li>
 </ol>
 <p>These 3 filters are implemented as 3 individual functions, so that you can cherry-pick your own combinations (See <a class="reference external" href="../api/pannb/">API doc</a>). The command line program <code class="docutils literal notranslate"><span class="pre">pannb</span></code> have all 3 included.</p>
-</section>
-<section id="example">
+</div>
+<div class="section" id="example">
 <h2><a class="toc-backref" href="#id3">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <p>See <code class="docutils literal notranslate"><span class="pre">docs/example.ipynb</span></code> for the input notebook and its <a class="reference external" href="../example/">output without the filter</a> and <a class="reference external" href="../example-output/">output with the filter</a>. Note that the output will be correct only if you set <code class="docutils literal notranslate"><span class="pre">--ipynb-output=html</span></code> after <a class="reference external" href="https://github.com/jgm/pandoc/pull/7538">this patch is merged</a>.</p>
-</section>
-</section>
+</div>
+</div>
 
 
     </div>
@@ -204,8 +203,8 @@
     </p>
     <p>
         &copy; Copyright 2021, Kolen Cheung.<br/>
-      Last updated on Sep 02, 2021.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.1.2.<br/>
+      Last updated on Sep 14, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
     </p>
   </div>
 </footer>

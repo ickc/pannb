@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>pannb &#8212; pannb 0.1.0 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/ickc/markdown-latex-css/css/_table.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/ickc/markdown-latex-css/fonts/fonts.min.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
@@ -113,69 +113,126 @@
 
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
 
-<span class="kn">from</span> <span class="nn">panflute.elements</span> <span class="kn">import</span> <span class="n">CodeBlock</span><span class="p">,</span> <span class="n">Div</span><span class="p">,</span> <span class="n">Doc</span><span class="p">,</span> <span class="n">RawBlock</span>
+<span class="kn">from</span> <span class="nn">logging</span> <span class="kn">import</span> <span class="n">getLogger</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+
+<span class="kn">from</span> <span class="nn">panflute.elements</span> <span class="kn">import</span> <span class="n">CodeBlock</span><span class="p">,</span> <span class="n">Div</span><span class="p">,</span> <span class="n">Doc</span><span class="p">,</span> <span class="n">Para</span><span class="p">,</span> <span class="n">RawBlock</span>
 <span class="kn">from</span> <span class="nn">panflute.io</span> <span class="kn">import</span> <span class="n">run_filters</span>
 <span class="kn">from</span> <span class="nn">panflute.tools</span> <span class="kn">import</span> <span class="n">convert_text</span>
 
-<span class="kn">from</span> <span class="nn">.util</span> <span class="kn">import</span> <span class="n">setup_logging</span>
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
 
-<span class="n">logger</span> <span class="o">=</span> <span class="n">setup_logging</span><span class="p">()</span>
+    <span class="kn">from</span> <span class="nn">panflute.base</span> <span class="kn">import</span> <span class="n">Element</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">RAW_TEX_FORMATS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;latex&quot;</span><span class="p">,</span> <span class="s2">&quot;textile&quot;</span><span class="p">,</span> <span class="s2">&quot;html&quot;</span><span class="p">,</span> <span class="s2">&quot;ipynb&quot;</span><span class="p">}</span>
+<span class="n">CODE_CELL_CLASSES</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;cell&quot;</span><span class="p">,</span> <span class="s2">&quot;code&quot;</span><span class="p">}</span>
+<span class="n">CODE_OUTPUT_CLASSES</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;output&quot;</span><span class="p">,</span> <span class="s2">&quot;execute_result&quot;</span><span class="p">}</span>
+
+<span class="c1">#: priority for converting from raw-block format to AST</span>
+<span class="c1">#: we choose latex first before some LaTeX Math environment might have extra delimiters around markdown, html</span>
+<span class="c1">#: markdown next because if exist, it is likely considered a source format to be converted from</span>
+<span class="n">CONVERT_CELL_OUTPUT_PRIORITY</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;latex&quot;</span><span class="p">,</span> <span class="s2">&quot;markdown&quot;</span><span class="p">,</span> <span class="s2">&quot;html&quot;</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="convert_jupytext_metadata"><a class="viewcode-back" href="../../api/pannb/#pannb.convert_jupytext_metadata">[docs]</a><span class="k">def</span> <span class="nf">convert_jupytext_metadata</span><span class="p">(</span><span class="n">raw_block</span><span class="p">:</span> <span class="n">RawBlock</span><span class="p">,</span> <span class="n">doc</span><span class="p">:</span> <span class="n">Doc</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="convert_jupytext_metadata"><a class="viewcode-back" href="../../api/pannb/#pannb.convert_jupytext_metadata">[docs]</a><span class="k">def</span> <span class="nf">convert_jupytext_metadata</span><span class="p">(</span><span class="n">raw_block</span><span class="p">:</span> <span class="n">RawBlock</span><span class="p">,</span> <span class="n">doc</span><span class="p">:</span> <span class="n">Doc</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Overwrite doc.metadata by jupytext-style metadata.&quot;&quot;&quot;</span>
     <span class="c1"># overwrite</span>
     <span class="n">meta</span> <span class="o">=</span> <span class="n">convert_text</span><span class="p">(</span><span class="n">raw_block</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">standalone</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">doc</span><span class="o">.</span><span class="n">_metadata</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">_metadata</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Overwritten doc metadata by jupytext&#39;s: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">doc</span><span class="o">.</span><span class="n">get_metadata</span><span class="p">())</span></div>
+    <span class="k">if</span> <span class="n">metadata</span> <span class="o">:=</span> <span class="n">meta</span><span class="o">.</span><span class="n">_metadata</span><span class="p">:</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">_metadata</span> <span class="o">=</span> <span class="n">metadata</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Overwritten doc metadata by jupytext&#39;s: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">doc</span><span class="o">.</span><span class="n">get_metadata</span><span class="p">())</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="s2">&quot;_walk_and_convert_jupytext_metadata_not_done&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
 
 
 <div class="viewcode-block" id="walk_and_convert_jupytext_metadata"><a class="viewcode-back" href="../../api/pannb/#pannb.walk_and_convert_jupytext_metadata">[docs]</a><span class="k">def</span> <span class="nf">walk_and_convert_jupytext_metadata</span><span class="p">(</span>
     <span class="n">element</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">doc</span><span class="p">:</span> <span class="n">Doc</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="p">):</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Walk and overwrite doc.metadata by jupytext-style metadata if found.&quot;&quot;&quot;</span>
+    <span class="n">_walk_and_convert_jupytext_metadata_not_done</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="s2">&quot;_walk_and_convert_jupytext_metadata_not_done&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
     <span class="k">if</span> <span class="p">(</span>
-        <span class="n">doc</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="n">_walk_and_convert_jupytext_metadata_not_done</span>
+        <span class="ow">and</span> <span class="n">doc</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
         <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">div</span> <span class="o">:=</span> <span class="n">element</span><span class="p">,</span> <span class="n">Div</span><span class="p">)</span>
         <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">div</span><span class="o">.</span><span class="n">content</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
         <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">((</span><span class="n">raw_block</span> <span class="o">:=</span> <span class="n">div</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">RawBlock</span><span class="p">)</span>
         <span class="ow">and</span> <span class="n">raw_block</span><span class="o">.</span><span class="n">format</span> <span class="o">==</span> <span class="s2">&quot;ipynb&quot;</span>
     <span class="p">):</span>
-        <span class="n">convert_jupytext_metadata</span><span class="p">(</span><span class="n">raw_block</span><span class="p">,</span> <span class="n">doc</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">[]</span></div>
+        <span class="k">return</span> <span class="n">convert_jupytext_metadata</span><span class="p">(</span><span class="n">raw_block</span><span class="p">,</span> <span class="n">doc</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
 
 
-<div class="viewcode-block" id="convert_raw_block"><a class="viewcode-back" href="../../api/pannb/#pannb.convert_raw_block">[docs]</a><span class="k">def</span> <span class="nf">convert_raw_block</span><span class="p">(</span>
+<div class="viewcode-block" id="convert_cell_output"><a class="viewcode-back" href="../../api/pannb/#pannb.convert_cell_output">[docs]</a><span class="k">def</span> <span class="nf">convert_cell_output</span><span class="p">(</span>
     <span class="n">element</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">doc</span><span class="p">:</span> <span class="n">Doc</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="p">):</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">RawBlock</span><span class="p">)</span> <span class="ow">and</span> <span class="n">element</span><span class="o">.</span><span class="n">format</span> <span class="o">!=</span> <span class="s2">&quot;ipynb&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">convert_text</span><span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">input_format</span><span class="o">=</span><span class="n">element</span><span class="o">.</span><span class="n">format</span><span class="p">)</span></div>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Div</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="p">(</span>
+        <span class="nb">isinstance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">Div</span><span class="p">)</span>
+        <span class="ow">and</span> <span class="n">CODE_OUTPUT_CLASSES</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">classes</span><span class="p">))</span>
+        <span class="ow">and</span> <span class="n">CODE_CELL_CLASSES</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">classes</span><span class="p">))</span>
+    <span class="p">):</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">content</span>
+        <span class="c1"># possible types are CodeBlock, Para, RawBlock</span>
+        <span class="c1"># Para is images</span>
+        <span class="n">has_no_para</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">content</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">Para</span><span class="p">):</span>
+                <span class="n">has_no_para</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="k">break</span>
+        <span class="c1"># if there&#39;s a Para (which contains an Image), don&#39;t touch this and let pandoc decide</span>
+        <span class="k">if</span> <span class="n">has_no_para</span><span class="p">:</span>
+            <span class="n">choices</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">RawBlock</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">content</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">RawBlock</span><span class="p">):</span>
+                    <span class="n">choices</span><span class="p">[</span><span class="n">elem</span><span class="o">.</span><span class="n">format</span><span class="p">]</span> <span class="o">=</span> <span class="n">elem</span>
+            <span class="c1"># if no choices, i.e. only CodeBlock, don&#39;t touch this and let pandoc decide</span>
+            <span class="k">if</span> <span class="n">choices</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">input_format</span> <span class="ow">in</span> <span class="n">CONVERT_CELL_OUTPUT_PRIORITY</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">input_format</span> <span class="ow">in</span> <span class="n">choices</span><span class="p">:</span>
+                        <span class="n">elem</span> <span class="o">=</span> <span class="n">choices</span><span class="p">[</span><span class="n">input_format</span><span class="p">]</span>
+                        <span class="k">if</span> <span class="n">input_format</span> <span class="ow">in</span> <span class="n">RAW_TEX_FORMATS</span><span class="p">:</span>
+                            <span class="n">input_format</span> <span class="o">+=</span> <span class="s2">&quot;+raw_tex&quot;</span>
+                        <span class="k">return</span> <span class="n">convert_text</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">input_format</span><span class="o">=</span><span class="n">input_format</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span></div>
 
 
-<div class="viewcode-block" id="remove_python_codeblock"><a class="viewcode-back" href="../../api/pannb/#pannb.remove_python_codeblock">[docs]</a><span class="k">def</span> <span class="nf">remove_python_codeblock</span><span class="p">(</span>
+<div class="viewcode-block" id="remove_cell_input_python"><a class="viewcode-back" href="../../api/pannb/#pannb.remove_cell_input_python">[docs]</a><span class="k">def</span> <span class="nf">remove_cell_input_python</span><span class="p">(</span>
     <span class="n">element</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">doc</span><span class="p">:</span> <span class="n">Doc</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Delete CodeBlock with only class python.&quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">CodeBlock</span><span class="p">)</span> <span class="ow">and</span> <span class="n">element</span><span class="o">.</span><span class="n">classes</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="p">[]</span></div>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Delete ipynb cell input with python code.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="p">(</span>
+        <span class="nb">isinstance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">CodeBlock</span><span class="p">)</span>
+        <span class="ow">and</span> <span class="n">element</span><span class="o">.</span><span class="n">classes</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">]</span>
+        <span class="ow">and</span> <span class="n">CODE_CELL_CLASSES</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">classes</span><span class="p">))</span>
+    <span class="p">):</span>
+        <span class="k">return</span> <span class="p">[]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
 
 
-<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../api/pannb/#pannb.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">doc</span><span class="p">:</span> <span class="n">Doc</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="c1">#: A tuple of filters (functions)</span>
+<span class="c1">#: equiv. to the pannb cli, but provided as a Python interface</span>
+<span class="n">FILTERS</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="n">Optional</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Doc</span><span class="p">]],</span> <span class="n">Union</span><span class="p">[</span><span class="n">Element</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="kc">None</span><span class="p">]],</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">walk_and_convert_jupytext_metadata</span><span class="p">,</span>
+    <span class="n">convert_cell_output</span><span class="p">,</span>
+    <span class="n">remove_cell_input_python</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../api/pannb/#pannb.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">doc</span><span class="p">:</span> <span class="n">Doc</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;a pandoc filter converting math in code block.</span>
 
 <span class="sd">    Fenced code block with class math will be runned using texp.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">run_filters</span><span class="p">(</span>
-        <span class="p">[</span>
-            <span class="n">walk_and_convert_jupytext_metadata</span><span class="p">,</span>
-            <span class="n">convert_raw_block</span><span class="p">,</span>
-            <span class="n">remove_python_codeblock</span><span class="p">,</span>
-        <span class="p">],</span>
-        <span class="n">doc</span><span class="o">=</span><span class="n">doc</span><span class="p">,</span>
-    <span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">run_filters</span><span class="p">(</span><span class="n">FILTERS</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="n">doc</span><span class="p">)</span></div>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
@@ -194,8 +251,8 @@
     </p>
     <p>
         &copy; Copyright 2021, Kolen Cheung.<br/>
-      Last updated on Sep 02, 2021.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.1.2.<br/>
+      Last updated on Sep 14, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
     </p>
   </div>
 </footer>

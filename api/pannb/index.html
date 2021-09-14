@@ -3,14 +3,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>pannb package &#8212; pannb 0.1.0 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/ickc/markdown-latex-css/css/_table.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/ickc/markdown-latex-css/fonts/fonts.min.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
@@ -125,48 +124,63 @@
   <div class="row">
     <div class="body col-md-12 content" role="main">
       
-  <section id="module-pannb">
+  <div class="section" id="module-pannb">
 <span id="pannb-package"></span><h1>pannb package<a class="headerlink" href="#module-pannb" title="Permalink to this headline">¶</a></h1>
 <p>A panflute filter that process ipynb inputs.</p>
+<dl class="py data">
+<dt id="pannb.CONVERT_CELL_OUTPUT_PRIORITY">
+<code class="sig-prename descclassname"><span class="pre">pannb.</span></code><code class="sig-name descname"><span class="pre">CONVERT_CELL_OUTPUT_PRIORITY</span></code><em class="property"> <span class="pre">=</span> <span class="pre">('latex',</span> <span class="pre">'markdown',</span> <span class="pre">'html')</span></em><a class="headerlink" href="#pannb.CONVERT_CELL_OUTPUT_PRIORITY" title="Permalink to this definition">¶</a></dt>
+<dd><p>priority for converting from raw-block format to AST
+we choose latex first before some LaTeX Math environment might have extra delimiters around markdown, html
+markdown next because if exist, it is likely considered a source format to be converted from</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="pannb.FILTERS">
+<code class="sig-prename descclassname"><span class="pre">pannb.</span></code><code class="sig-name descname"><span class="pre">FILTERS</span></code><em class="property"><span class="pre">:</span> <span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Element</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Doc</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Element</span><span class="p"><span class="pre">,</span> </span><span class="pre">list</span><span class="p"><span class="pre">,</span> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="p"><span class="pre">…</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">(&lt;function</span> <span class="pre">walk_and_convert_jupytext_metadata&gt;,</span> <span class="pre">&lt;function</span> <span class="pre">convert_cell_output&gt;,</span> <span class="pre">&lt;function</span> <span class="pre">remove_cell_input_python&gt;)</span></em><a class="headerlink" href="#pannb.FILTERS" title="Permalink to this definition">¶</a></dt>
+<dd><p>A tuple of filters (functions)
+equiv. to the pannb cli, but provided as a Python interface</p>
+</dd></dl>
+
 <dl class="py function">
-<dt class="sig sig-object py" id="pannb.convert_jupytext_metadata">
-<span class="sig-prename descclassname"><span class="pre">pannb.</span></span><span class="sig-name descname"><span class="pre">convert_jupytext_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw_block</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">panflute.elements.RawBlock</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">panflute.elements.Doc</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/pannb/#convert_jupytext_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pannb.convert_jupytext_metadata" title="Permalink to this definition">¶</a></dt>
+<dt id="pannb.convert_cell_output">
+<code class="sig-prename descclassname"><span class="pre">pannb.</span></code><code class="sig-name descname"><span class="pre">convert_cell_output</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Doc</span> <span class="p"><span class="pre">|</span></span> <span class="pre">None</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Div</span> <span class="p"><span class="pre">|</span></span> <span class="pre">None</span><a class="reference internal" href="../../_modules/pannb/#convert_cell_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pannb.convert_cell_output" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="pannb.convert_jupytext_metadata">
+<code class="sig-prename descclassname"><span class="pre">pannb.</span></code><code class="sig-name descname"><span class="pre">convert_jupytext_metadata</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw_block</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">RawBlock</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Doc</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">list</span> <span class="p"><span class="pre">|</span></span> <span class="pre">None</span><a class="reference internal" href="../../_modules/pannb/#convert_jupytext_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pannb.convert_jupytext_metadata" title="Permalink to this definition">¶</a></dt>
 <dd><p>Overwrite doc.metadata by jupytext-style metadata.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="pannb.convert_raw_block">
-<span class="sig-prename descclassname"><span class="pre">pannb.</span></span><span class="sig-name descname"><span class="pre">convert_raw_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Doc</span> <span class="p"><span class="pre">|</span></span> <span class="pre">None</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pannb/#convert_raw_block"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pannb.convert_raw_block" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="pannb.main">
-<span class="sig-prename descclassname"><span class="pre">pannb.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Doc</span> <span class="p"><span class="pre">|</span></span> <span class="pre">None</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pannb/#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pannb.main" title="Permalink to this definition">¶</a></dt>
+<dt id="pannb.main">
+<code class="sig-prename descclassname"><span class="pre">pannb.</span></code><code class="sig-name descname"><span class="pre">main</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Doc</span> <span class="p"><span class="pre">|</span></span> <span class="pre">None</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Any</span><a class="reference internal" href="../../_modules/pannb/#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pannb.main" title="Permalink to this definition">¶</a></dt>
 <dd><p>a pandoc filter converting math in code block.</p>
 <p>Fenced code block with class math will be runned using texp.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="pannb.remove_python_codeblock">
-<span class="sig-prename descclassname"><span class="pre">pannb.</span></span><span class="sig-name descname"><span class="pre">remove_python_codeblock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Doc</span> <span class="p"><span class="pre">|</span></span> <span class="pre">None</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pannb/#remove_python_codeblock"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pannb.remove_python_codeblock" title="Permalink to this definition">¶</a></dt>
-<dd><p>Delete CodeBlock with only class python.</p>
+<dt id="pannb.remove_cell_input_python">
+<code class="sig-prename descclassname"><span class="pre">pannb.</span></code><code class="sig-name descname"><span class="pre">remove_cell_input_python</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Doc</span> <span class="p"><span class="pre">|</span></span> <span class="pre">None</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">list</span> <span class="p"><span class="pre">|</span></span> <span class="pre">None</span><a class="reference internal" href="../../_modules/pannb/#remove_cell_input_python"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pannb.remove_cell_input_python" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete ipynb cell input with python code.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="pannb.walk_and_convert_jupytext_metadata">
-<span class="sig-prename descclassname"><span class="pre">pannb.</span></span><span class="sig-name descname"><span class="pre">walk_and_convert_jupytext_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Doc</span> <span class="p"><span class="pre">|</span></span> <span class="pre">None</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pannb/#walk_and_convert_jupytext_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pannb.walk_and_convert_jupytext_metadata" title="Permalink to this definition">¶</a></dt>
+<dt id="pannb.walk_and_convert_jupytext_metadata">
+<code class="sig-prename descclassname"><span class="pre">pannb.</span></code><code class="sig-name descname"><span class="pre">walk_and_convert_jupytext_metadata</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Doc</span> <span class="p"><span class="pre">|</span></span> <span class="pre">None</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">list</span> <span class="p"><span class="pre">|</span></span> <span class="pre">None</span><a class="reference internal" href="../../_modules/pannb/#walk_and_convert_jupytext_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pannb.walk_and_convert_jupytext_metadata" title="Permalink to this definition">¶</a></dt>
 <dd><p>Walk and overwrite doc.metadata by jupytext-style metadata if found.</p>
 </dd></dl>
 
-<section id="submodules">
+<div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../pannb.util/">pannb.util module</a></li>
 </ul>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
     </div>
@@ -181,8 +195,8 @@
     </p>
     <p>
         &copy; Copyright 2021, Kolen Cheung.<br/>
-      Last updated on Sep 02, 2021.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.1.2.<br/>
+      Last updated on Sep 14, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
     </p>
   </div>
 </footer>
