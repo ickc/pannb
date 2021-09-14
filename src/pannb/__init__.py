@@ -10,7 +10,7 @@ from panflute.io import run_filters
 from panflute.tools import convert_text
 
 if TYPE_CHECKING:
-    from typing import Any
+    from typing import Any, Callable, Optional, Union
 
     from panflute.base import Element
 
@@ -107,19 +107,21 @@ def remove_cell_input_python(
         return None
 
 
+#: A tuple of filters (functions)
+#: equiv. to the pannb cli, but provided as a Python interface
+FILTERS: tuple[Callable[[Optional[Element], Optional[Doc]], Union[Element, list, None]], ...] = (
+    walk_and_convert_jupytext_metadata,
+    convert_cell_output,
+    remove_cell_input_python,
+)
+
+
 def main(doc: Doc | None = None) -> Any:
     """a pandoc filter converting math in code block.
 
     Fenced code block with class math will be runned using texp.
     """
-    return run_filters(
-        [
-            walk_and_convert_jupytext_metadata,
-            convert_cell_output,
-            remove_cell_input_python,
-        ],
-        doc=doc,
-    )
+    return run_filters(FILTERS, doc=doc)
 
 
 if __name__ == "__main__":
