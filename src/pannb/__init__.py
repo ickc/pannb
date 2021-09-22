@@ -21,9 +21,9 @@ CODE_CELL_CLASSES = {"cell", "code"}
 CODE_OUTPUT_CLASSES = {"output", "execute_result"}
 
 #: priority for converting from raw-block format to AST
-#: we choose latex first before some LaTeX Math environment might have extra delimiters around markdown, html
+#: we choose html first before some LaTeX Math environment might have extra delimiters around markdown
 #: markdown next because if exist, it is likely considered a source format to be converted from
-CONVERT_CELL_OUTPUT_PRIORITY = ("latex", "markdown", "html")
+CONVERT_CELL_OUTPUT_PRIORITY = ("html", "markdown", "latex")
 
 
 def convert_jupytext_metadata(raw_block: RawBlock, doc: Doc) -> list | None:
