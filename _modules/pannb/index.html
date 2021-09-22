@@ -132,9 +132,9 @@
 <span class="n">CODE_OUTPUT_CLASSES</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;output&quot;</span><span class="p">,</span> <span class="s2">&quot;execute_result&quot;</span><span class="p">}</span>
 
 <span class="c1">#: priority for converting from raw-block format to AST</span>
-<span class="c1">#: we choose latex first before some LaTeX Math environment might have extra delimiters around markdown, html</span>
+<span class="c1">#: we choose html first before some LaTeX Math environment might have extra delimiters around markdown</span>
 <span class="c1">#: markdown next because if exist, it is likely considered a source format to be converted from</span>
-<span class="n">CONVERT_CELL_OUTPUT_PRIORITY</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;latex&quot;</span><span class="p">,</span> <span class="s2">&quot;markdown&quot;</span><span class="p">,</span> <span class="s2">&quot;html&quot;</span><span class="p">)</span>
+<span class="n">CONVERT_CELL_OUTPUT_PRIORITY</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;html&quot;</span><span class="p">,</span> <span class="s2">&quot;markdown&quot;</span><span class="p">,</span> <span class="s2">&quot;latex&quot;</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="convert_jupytext_metadata"><a class="viewcode-back" href="../../api/pannb/#pannb.convert_jupytext_metadata">[docs]</a><span class="k">def</span> <span class="nf">convert_jupytext_metadata</span><span class="p">(</span><span class="n">raw_block</span><span class="p">:</span> <span class="n">RawBlock</span><span class="p">,</span> <span class="n">doc</span><span class="p">:</span> <span class="n">Doc</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
@@ -251,7 +251,7 @@
     </p>
     <p>
         &copy; Copyright 2021, Kolen Cheung.<br/>
-      Last updated on Sep 14, 2021.<br/>
+      Last updated on Sep 22, 2021.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
     </p>
   </div>

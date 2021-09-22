@@ -129,9 +129,9 @@
 <p>A panflute filter that process ipynb inputs.</p>
 <dl class="py data">
 <dt id="pannb.CONVERT_CELL_OUTPUT_PRIORITY">
-<code class="sig-prename descclassname"><span class="pre">pannb.</span></code><code class="sig-name descname"><span class="pre">CONVERT_CELL_OUTPUT_PRIORITY</span></code><em class="property"> <span class="pre">=</span> <span class="pre">('latex',</span> <span class="pre">'markdown',</span> <span class="pre">'html')</span></em><a class="headerlink" href="#pannb.CONVERT_CELL_OUTPUT_PRIORITY" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">pannb.</span></code><code class="sig-name descname"><span class="pre">CONVERT_CELL_OUTPUT_PRIORITY</span></code><em class="property"> <span class="pre">=</span> <span class="pre">('html',</span> <span class="pre">'markdown',</span> <span class="pre">'latex')</span></em><a class="headerlink" href="#pannb.CONVERT_CELL_OUTPUT_PRIORITY" title="Permalink to this definition">¶</a></dt>
 <dd><p>priority for converting from raw-block format to AST
-we choose latex first before some LaTeX Math environment might have extra delimiters around markdown, html
+we choose html first before some LaTeX Math environment might have extra delimiters around markdown
 markdown next because if exist, it is likely considered a source format to be converted from</p>
 </dd></dl>
 
@@ -195,7 +195,7 @@ equiv. to the pannb cli, but provided as a Python interface</p>
     </p>
     <p>
         &copy; Copyright 2021, Kolen Cheung.<br/>
-      Last updated on Sep 14, 2021.<br/>
+      Last updated on Sep 22, 2021.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
     </p>
   </div>
