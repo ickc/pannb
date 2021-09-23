@@ -202,6 +202,25 @@
     <span class="k">return</span> <span class="kc">None</span></div>
 
 
+<div class="viewcode-block" id="remove_code_cell_classes"><a class="viewcode-back" href="../../api/pannb/#pannb.remove_code_cell_classes">[docs]</a><span class="k">def</span> <span class="nf">remove_code_cell_classes</span><span class="p">(</span>
+    <span class="n">element</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">doc</span><span class="p">:</span> <span class="n">Doc</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Div</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Remove code-cell classes from code-cell.</span>
+
+<span class="sd">    Pandoc by default inject a CSS that indent class with code.</span>
+<span class="sd">    Doing this will remove that from from output code cells,</span>
+<span class="sd">    hence also remove that extra indentation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">Div</span><span class="p">)</span> <span class="ow">and</span> <span class="n">CODE_CELL_CLASSES</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">classes</span><span class="p">)):</span>
+        <span class="k">return</span> <span class="n">Div</span><span class="p">(</span>
+            <span class="o">*</span><span class="n">element</span><span class="o">.</span><span class="n">content</span><span class="p">,</span>
+            <span class="n">identifier</span><span class="o">=</span><span class="n">element</span><span class="o">.</span><span class="n">identifier</span><span class="p">,</span>
+            <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="bp">cls</span> <span class="k">for</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="n">element</span><span class="o">.</span><span class="n">classes</span> <span class="k">if</span> <span class="bp">cls</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">CODE_CELL_CLASSES</span><span class="p">],</span>
+            <span class="n">attributes</span><span class="o">=</span><span class="n">element</span><span class="o">.</span><span class="n">attributes</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
 <div class="viewcode-block" id="remove_cell_input_python"><a class="viewcode-back" href="../../api/pannb/#pannb.remove_cell_input_python">[docs]</a><span class="k">def</span> <span class="nf">remove_cell_input_python</span><span class="p">(</span>
     <span class="n">element</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">doc</span><span class="p">:</span> <span class="n">Doc</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -223,6 +242,7 @@
     <span class="n">walk_and_convert_jupytext_metadata</span><span class="p">,</span>
     <span class="n">convert_cell_output</span><span class="p">,</span>
     <span class="n">remove_cell_input_python</span><span class="p">,</span>
+    <span class="n">remove_code_cell_classes</span><span class="p">,</span>
 <span class="p">)</span>
 
 
@@ -250,7 +270,7 @@
     </p>
     <p>
         &copy; Copyright 2021, Kolen Cheung.<br/>
-      Last updated on Sep 22, 2021.<br/>
+      Last updated on Sep 23, 2021.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
     </p>
   </div>
