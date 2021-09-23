@@ -16,7 +16,7 @@ Pandoc filter for ipynb
    Below we'll write some Python code that will becomes invisible after
    pannb filtering.
 
-.. container:: cell code
+.. container::
 
 .. container:: cell markdown
 
@@ -25,7 +25,7 @@ Pandoc filter for ipynb
 
    For example, the below table will be valid in LaTeX output.
 
-.. container:: cell code
+.. container::
 
    .. container::
 
