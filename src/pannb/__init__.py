@@ -91,6 +91,25 @@ def convert_cell_output(
     return None
 
 
+def remove_code_cell_classes(
+    element=None,
+    doc: Doc | None = None,
+) -> Div | None:
+    """Remove code-cell classes from code-cell.
+
+    Pandoc by default inject a CSS that indent class with code.
+    Doing this will remove that from from output code cells,
+    hence also remove that extra indentation.
+    """
+    if isinstance(element, Div) and CODE_CELL_CLASSES.issubset(set(element.classes)):
+        return Div(
+            *element.content,
+            identifier=element.identifier,
+            classes=[cls for cls in element.classes if cls not in CODE_CELL_CLASSES],
+            attributes=element.attributes,
+        )
+
+
 def remove_cell_input_python(
     element=None,
     doc: Doc | None = None,
@@ -112,6 +131,7 @@ FILTERS: tuple[Callable[[Optional[Element], Optional[Doc]], Union[Element, list,
     walk_and_convert_jupytext_metadata,
     convert_cell_output,
     remove_cell_input_python,
+    remove_code_cell_classes,
 )
 
 
