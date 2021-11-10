@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 from logging import getLogger
 from typing import TYPE_CHECKING
 
@@ -24,11 +25,14 @@ CODE_OUTPUT_CLASSES = {"output", "execute_result"}
 #: markdown first because if exist, it is likely considered a source format to be converted from
 CONVERT_CELL_OUTPUT_PRIORITY = ("markdown", "html", "latex")
 
+#: specify extra pandoc args used when calling convert_text
+PANNBPANDOCARGS: list[str] = os.environ.get("PANNBPANDOCARGS", "").split()
+
 
 def convert_jupytext_metadata(raw_block: RawBlock, doc: Doc) -> list | None:
     """Overwrite doc.metadata by jupytext-style metadata."""
     # overwrite
-    meta = convert_text(raw_block.text, standalone=True)
+    meta = convert_text(raw_block.text, standalone=True, extra_args=PANNBPANDOCARGS)
     if metadata := meta._metadata:
         doc._metadata = metadata
         logger.debug("Overwritten doc metadata by jupytext's: %s", doc.get_metadata())
@@ -87,7 +91,7 @@ def convert_cell_output(
                         elem = choices[input_format]
                         if input_format in RAW_TEX_FORMATS:
                             input_format += "+raw_tex"
-                        return convert_text(elem.text, input_format=input_format)
+                        return convert_text(elem.text, input_format=input_format, extra_args=PANNBPANDOCARGS)
     return None
 
 
