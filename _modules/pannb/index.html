@@ -113,6 +113,7 @@
 
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
 
+<span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">logging</span> <span class="kn">import</span> <span class="n">getLogger</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
 
@@ -135,11 +136,14 @@
 <span class="c1">#: markdown first because if exist, it is likely considered a source format to be converted from</span>
 <span class="n">CONVERT_CELL_OUTPUT_PRIORITY</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;markdown&quot;</span><span class="p">,</span> <span class="s2">&quot;html&quot;</span><span class="p">,</span> <span class="s2">&quot;latex&quot;</span><span class="p">)</span>
 
+<span class="c1">#: specify extra pandoc args used when calling convert_text</span>
+<span class="n">PANNBPANDOCARGS</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;PANNBPANDOCARGS&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
 
 <div class="viewcode-block" id="convert_jupytext_metadata"><a class="viewcode-back" href="../../api/pannb/#pannb.convert_jupytext_metadata">[docs]</a><span class="k">def</span> <span class="nf">convert_jupytext_metadata</span><span class="p">(</span><span class="n">raw_block</span><span class="p">:</span> <span class="n">RawBlock</span><span class="p">,</span> <span class="n">doc</span><span class="p">:</span> <span class="n">Doc</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Overwrite doc.metadata by jupytext-style metadata.&quot;&quot;&quot;</span>
     <span class="c1"># overwrite</span>
-    <span class="n">meta</span> <span class="o">=</span> <span class="n">convert_text</span><span class="p">(</span><span class="n">raw_block</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">standalone</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">meta</span> <span class="o">=</span> <span class="n">convert_text</span><span class="p">(</span><span class="n">raw_block</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">standalone</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">extra_args</span><span class="o">=</span><span class="n">PANNBPANDOCARGS</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">metadata</span> <span class="o">:=</span> <span class="n">meta</span><span class="o">.</span><span class="n">_metadata</span><span class="p">:</span>
         <span class="n">doc</span><span class="o">.</span><span class="n">_metadata</span> <span class="o">=</span> <span class="n">metadata</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Overwritten doc metadata by jupytext&#39;s: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">doc</span><span class="o">.</span><span class="n">get_metadata</span><span class="p">())</span>
@@ -198,7 +202,7 @@
                         <span class="n">elem</span> <span class="o">=</span> <span class="n">choices</span><span class="p">[</span><span class="n">input_format</span><span class="p">]</span>
                         <span class="k">if</span> <span class="n">input_format</span> <span class="ow">in</span> <span class="n">RAW_TEX_FORMATS</span><span class="p">:</span>
                             <span class="n">input_format</span> <span class="o">+=</span> <span class="s2">&quot;+raw_tex&quot;</span>
-                        <span class="k">return</span> <span class="n">convert_text</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">input_format</span><span class="o">=</span><span class="n">input_format</span><span class="p">)</span>
+                        <span class="k">return</span> <span class="n">convert_text</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">input_format</span><span class="o">=</span><span class="n">input_format</span><span class="p">,</span> <span class="n">extra_args</span><span class="o">=</span><span class="n">PANNBPANDOCARGS</span><span class="p">)</span>
     <span class="k">return</span> <span class="kc">None</span></div>
 
 
@@ -270,7 +274,7 @@
     </p>
     <p>
         &copy; Copyright 2021, Kolen Cheung.<br/>
-      Last updated on Sep 23, 2021.<br/>
+      Last updated on Nov 10, 2021.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
     </p>
   </div>
