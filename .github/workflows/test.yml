@@ -9,16 +9,18 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version:
-          # - pypy-3.6
-          # - pypy-3.7
-          # - 3.6
-          # - 3.7
-          - 3.8
-          - 3.9
-        pandoc-version:
-          - latest
-
+        # see setup.py for supported versions
+        # here instead of having a matrix
+        # we only test combinations in a round-robin fashion
+        # make sure the versions are monotmonic increasing w.r.t. each other
+        # other wise e.g. an older version of a dependency may not work well with a newer version of Python
+        include:
+          - python-version: "3.8"
+            pandoc-version: "2.15"
+          - python-version: "3.9"
+            pandoc-version: "2.16"
+          - python-version: "3.10"
+            pandoc-version: "latest"
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
