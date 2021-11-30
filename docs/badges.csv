@@ -16,7 +16,7 @@ package,"[![Supported versions](https://img.shields.io/pypi/pyversions/pannb.svg
 [![Development Status](https://img.shields.io/pypi/status/pannb.svg)](https://pypi.python.org/pypi/pannb/)
 [![Downloads](https://img.shields.io/pypi/dm/pannb.svg)](https://pypi.python.org/pypi/pannb/)
 
-[![Commits since latest release](https://img.shields.io/github/commits-since/ickc/pannb/v0.1.0.svg)](https://github.com/ickc/pannb/compare/v0.1.0...master)
+[![Commits since latest release](https://img.shields.io/github/commits-since/ickc/pannb/v0.1.1.svg)](https://github.com/ickc/pannb/compare/v0.1.1...master)
 ![License](https://img.shields.io/pypi/l/pannb.svg)"
 conda-forge,"[![Conda Recipe](https://img.shields.io/badge/recipe-pannb-green.svg)](https://anaconda.org/conda-forge/pannb)
 [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/pannb.svg)](https://anaconda.org/conda-forge/pannb)
