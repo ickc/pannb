@@ -4,7 +4,7 @@
 pannb—pandoc filter for ipynb
 =============================
 
-:Date:   September 2, 2021
+:Date:   November 30, 2021
 
 .. contents::
    :depth: 3
