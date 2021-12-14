@@ -42,44 +42,24 @@ PANNBPANDOCARGS: list[str] = os.environ.get("PANNBPANDOCARGS", "").split()
 __version__: str = "0.1.1"
 
 
-def convert_jupytext_metadata(raw_block: RawBlock, doc: Doc) -> list | None:
-    """Overwrite doc.metadata by jupytext-style metadata."""
-    # overwrite
-    meta = convert_text(raw_block.text, standalone=True, extra_args=PANNBPANDOCARGS)
-    if metadata := meta._metadata:
-        doc._metadata = metadata
-        logger.debug("Overwritten doc metadata by jupytext's: %s", doc.get_metadata())
-        setattr(doc, "_walk_and_convert_jupytext_metadata_not_done", False)
-        return []
-    else:
-        return None
-
-
-def walk_and_convert_jupytext_metadata(
-    element=None,
-    doc: Doc | None = None,
-) -> list | None:
-    """Walk and overwrite doc.metadata by jupytext-style metadata if found."""
-    _walk_and_convert_jupytext_metadata_not_done = getattr(doc, "_walk_and_convert_jupytext_metadata_not_done", True)
+def prepare_jupytext_metadata(
+    doc: Doc | None,
+) -> None:
+    """Replace doc metadata with jupytext metadata."""
     if (
-        _walk_and_convert_jupytext_metadata_not_done
-        and doc is not None
-        and isinstance(div := element, Div)
+        doc is not None
+        and (content := doc.content)
+        and isinstance(div := content[0], Div)
         and len(div.content) == 1
         and isinstance((raw_block := div.content[0]), RawBlock)
         and raw_block.format == "ipynb"
     ):
-        return convert_jupytext_metadata(raw_block, doc)
-    else:
-        return None
-
-
-def prepare_jupytext_metadata(
-    doc: Doc | None,
-) -> None:
-    if doc is None:
-        return None
-    doc.walk(walk_and_convert_jupytext_metadata)
+        # overwrite
+        meta = convert_text(raw_block.text, standalone=True, extra_args=PANNBPANDOCARGS)
+        if metadata := meta._metadata:
+            doc._metadata = metadata
+            del content[0]
+            logger.debug("Overwritten doc metadata by jupytext's: %s", doc.get_metadata())
 
 
 def convert_cell_output(
