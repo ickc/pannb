@@ -3,12 +3,13 @@
 from __future__ import annotations
 
 import os
-from logging import getLogger
 from typing import TYPE_CHECKING
 
 from panflute.elements import CodeBlock, Div, Doc, Para, RawBlock
 from panflute.io import run_filters
 from panflute.tools import convert_text
+
+from .util import setup_logging
 
 if TYPE_CHECKING:
     from typing import Any, Callable, Optional, Sequence, Union
@@ -25,7 +26,7 @@ if TYPE_CHECKING:
         tuple[Sequence[PANFLUTE_ACTION], PANFLUTE_PREPARE, PANFLUTE_FINALIZE],
     ]
 
-logger = getLogger(__name__)
+logger = setup_logging()
 
 RAW_TEX_FORMATS = {"latex", "textile", "html", "ipynb"}
 CODE_CELL_CLASSES = {"cell", "code"}
