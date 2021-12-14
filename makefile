@@ -47,7 +47,7 @@ README.rst: docs/README.md docs/badges.csv
 		>> ../$@
 
 docs/%-output.rst: docs/%.ipynb
-	PANNBLOGLEVEL=DEBUG pandoc $< -s --to json --ipynb-output=all | pannb | pandoc --from json -s -o $@
+	PANNBLOGLEVEL=DEBUG pandoc $< -s -o $@ --ipynb-output=all -F pannb
 
 %.rst: %.md
 	printf \
