@@ -11,11 +11,19 @@ from panflute.io import run_filters
 from panflute.tools import convert_text
 
 if TYPE_CHECKING:
-    from typing import Any, Callable, Union
+    from typing import Any, Callable, Optional, Sequence, Union
 
-    from panflute.base import Doc, Element
+    from panflute.elements import CodeBlock, Doc, Element
 
     PANFLUTE_ACTION = Callable[[Element, Doc], Union[None, Element, list[Element]]]
+    PANFLUTE_PREPARE = Optional[Callable[[Doc], None]]
+    PANFLUTE_FINALIZE = PANFLUTE_PREPARE
+    # see https://panflute.readthedocs.io/en/latest/code.html?highlight=run_filters#panflute.io.run_filters
+    # PANFLUTE_FILTER can either be just an action, or a tuple of action, prepare, finalize
+    PANFLUTE_FILTER = Union[
+        PANFLUTE_ACTION,
+        tuple[Sequence[PANFLUTE_ACTION], PANFLUTE_PREPARE, PANFLUTE_FINALIZE],
+    ]
 
 logger = getLogger(__name__)
 
@@ -63,6 +71,14 @@ def walk_and_convert_jupytext_metadata(
         return convert_jupytext_metadata(raw_block, doc)
     else:
         return None
+
+
+def prepare_jupytext_metadata(
+    doc: Doc | None,
+) -> None:
+    if doc is None:
+        return None
+    doc.walk(walk_and_convert_jupytext_metadata)
 
 
 def convert_cell_output(
@@ -116,6 +132,7 @@ def remove_code_cell_classes(
             classes=[cls for cls in element.classes if cls not in CODE_CELL_CLASSES],
             attributes=element.attributes,
         )
+    return None
 
 
 def remove_cell_input_python(
@@ -133,14 +150,15 @@ def remove_cell_input_python(
         return None
 
 
-#: A tuple of filters (functions)
-#: equiv. to the pannb cli, but provided as a Python interface
-FILTERS: tuple[PANFLUTE_ACTION] = (
-    walk_and_convert_jupytext_metadata,
+actions: tuple[PANFLUTE_ACTION] = (
     convert_cell_output,
     remove_cell_input_python,
     remove_code_cell_classes,
-)
+)  # type: ignore[assignment] # type limitation
+prepare: PANFLUTE_PREPARE = prepare_jupytext_metadata
+finalize: PANFLUTE_FINALIZE = None
+#: equiv. to the texp cli, but provided as a Python interface
+FILTER: PANFLUTE_FILTER = (actions, prepare, finalize)
 
 
 def main(doc: Doc | None = None) -> Any:
@@ -148,7 +166,7 @@ def main(doc: Doc | None = None) -> Any:
 
     Fenced code block with class math will be runned using texp.
     """
-    return run_filters(FILTERS, doc=doc)
+    return run_filters(actions, prepare=prepare, finalize=finalize, doc=doc)
 
 
 if __name__ == "__main__":
