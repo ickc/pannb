@@ -135,10 +135,9 @@ markdown first because if exist, it is likely considered a source format to be c
 </dd></dl>
 
 <dl class="py data">
-<dt id="pannb.FILTERS">
-<code class="sig-prename descclassname"><span class="pre">pannb.</span></code><code class="sig-name descname"><span class="pre">FILTERS</span></code><em class="property"><span class="pre">:</span> <span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">PANFLUTE_ACTION</span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">(&lt;function</span> <span class="pre">walk_and_convert_jupytext_metadata&gt;,</span> <span class="pre">&lt;function</span> <span class="pre">convert_cell_output&gt;,</span> <span class="pre">&lt;function</span> <span class="pre">remove_cell_input_python&gt;,</span> <span class="pre">&lt;function</span> <span class="pre">remove_code_cell_classes&gt;)</span></em><a class="headerlink" href="#pannb.FILTERS" title="Permalink to this definition">¶</a></dt>
-<dd><p>A tuple of filters (functions)
-equiv. to the pannb cli, but provided as a Python interface</p>
+<dt id="pannb.FILTER">
+<code class="sig-prename descclassname"><span class="pre">pannb.</span></code><code class="sig-name descname"><span class="pre">FILTER</span></code><em class="property"><span class="pre">:</span> <span class="pre">PANFLUTE_FILTER</span></em><em class="property"> <span class="pre">=</span> <span class="pre">((&lt;function</span> <span class="pre">convert_cell_output&gt;,</span> <span class="pre">&lt;function</span> <span class="pre">remove_cell_input_python&gt;,</span> <span class="pre">&lt;function</span> <span class="pre">remove_code_cell_classes&gt;),</span> <span class="pre">&lt;function</span> <span class="pre">prepare_jupytext_metadata&gt;,</span> <span class="pre">None)</span></em><a class="headerlink" href="#pannb.FILTER" title="Permalink to this definition">¶</a></dt>
+<dd><p>equiv. to the texp cli, but provided as a Python interface</p>
 </dd></dl>
 
 <dl class="py data">
@@ -153,16 +152,22 @@ equiv. to the pannb cli, but provided as a Python interface</p>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="pannb.convert_jupytext_metadata">
-<code class="sig-prename descclassname"><span class="pre">pannb.</span></code><code class="sig-name descname"><span class="pre">convert_jupytext_metadata</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw_block</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">RawBlock</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Doc</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">list</span> <span class="p"><span class="pre">|</span></span> <span class="pre">None</span><a class="reference internal" href="../../_modules/pannb/#convert_jupytext_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pannb.convert_jupytext_metadata" title="Permalink to this definition">¶</a></dt>
-<dd><p>Overwrite doc.metadata by jupytext-style metadata.</p>
-</dd></dl>
-
-<dl class="py function">
 <dt id="pannb.main">
 <code class="sig-prename descclassname"><span class="pre">pannb.</span></code><code class="sig-name descname"><span class="pre">main</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Doc</span> <span class="p"><span class="pre">|</span></span> <span class="pre">None</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Any</span><a class="reference internal" href="../../_modules/pannb/#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pannb.main" title="Permalink to this definition">¶</a></dt>
 <dd><p>a pandoc filter converting math in code block.</p>
 <p>Fenced code block with class math will be runned using texp.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pannb.prepare">
+<code class="sig-prename descclassname"><span class="pre">pannb.</span></code><code class="sig-name descname"><span class="pre">prepare</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Doc</span> <span class="p"><span class="pre">|</span></span> <span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pannb.prepare" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace doc metadata with jupytext metadata.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pannb.prepare_jupytext_metadata">
+<code class="sig-prename descclassname"><span class="pre">pannb.</span></code><code class="sig-name descname"><span class="pre">prepare_jupytext_metadata</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Doc</span> <span class="p"><span class="pre">|</span></span> <span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="reference internal" href="../../_modules/pannb/#prepare_jupytext_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pannb.prepare_jupytext_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace doc metadata with jupytext metadata.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -178,12 +183,6 @@ equiv. to the pannb cli, but provided as a Python interface</p>
 <p>Pandoc by default inject a CSS that indent class with code.
 Doing this will remove that from from output code cells,
 hence also remove that extra indentation.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt id="pannb.walk_and_convert_jupytext_metadata">
-<code class="sig-prename descclassname"><span class="pre">pannb.</span></code><code class="sig-name descname"><span class="pre">walk_and_convert_jupytext_metadata</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Doc</span> <span class="p"><span class="pre">|</span></span> <span class="pre">None</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">list</span> <span class="p"><span class="pre">|</span></span> <span class="pre">None</span><a class="reference internal" href="../../_modules/pannb/#walk_and_convert_jupytext_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pannb.walk_and_convert_jupytext_metadata" title="Permalink to this definition">¶</a></dt>
-<dd><p>Walk and overwrite doc.metadata by jupytext-style metadata if found.</p>
 </dd></dl>
 
 <div class="section" id="submodules">
