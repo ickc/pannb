@@ -11,9 +11,11 @@ from panflute.io import run_filters
 from panflute.tools import convert_text
 
 if TYPE_CHECKING:
-    from typing import Any, Callable, Optional, Union
+    from typing import Any, Callable, Union
 
-    from panflute.base import Element
+    from panflute.base import Doc, Element
+
+    PANFLUTE_ACTION = Callable[[Element, Doc], Union[None, Element, list[Element]]]
 
 logger = getLogger(__name__)
 
@@ -133,7 +135,7 @@ def remove_cell_input_python(
 
 #: A tuple of filters (functions)
 #: equiv. to the pannb cli, but provided as a Python interface
-FILTERS: tuple[Callable[[Optional[Element], Optional[Doc]], Union[Element, list, None]], ...] = (
+FILTERS: tuple[PANFLUTE_ACTION] = (
     walk_and_convert_jupytext_metadata,
     convert_cell_output,
     remove_cell_input_python,
