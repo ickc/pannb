@@ -135,14 +135,8 @@ markdown first because if exist, it is likely considered a source format to be c
 </dd></dl>
 
 <dl class="py data">
-<dt id="pannb.FILTER">
-<code class="sig-prename descclassname"><span class="pre">pannb.</span></code><code class="sig-name descname"><span class="pre">FILTER</span></code><em class="property"><span class="pre">:</span> <span class="pre">PANFLUTE_FILTER</span></em><em class="property"> <span class="pre">=</span> <span class="pre">((&lt;function</span> <span class="pre">convert_cell_output&gt;,</span> <span class="pre">&lt;function</span> <span class="pre">remove_cell_input_python&gt;,</span> <span class="pre">&lt;function</span> <span class="pre">remove_code_cell_classes&gt;),</span> <span class="pre">&lt;function</span> <span class="pre">prepare_jupytext_metadata&gt;,</span> <span class="pre">None)</span></em><a class="headerlink" href="#pannb.FILTER" title="Permalink to this definition">¶</a></dt>
-<dd><p>equiv. to the texp cli, but provided as a Python interface</p>
-</dd></dl>
-
-<dl class="py data">
 <dt id="pannb.PANNBPANDOCARGS">
-<code class="sig-prename descclassname"><span class="pre">pannb.</span></code><code class="sig-name descname"><span class="pre">PANNBPANDOCARGS</span></code><em class="property"><span class="pre">:</span> <span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#pannb.PANNBPANDOCARGS" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">pannb.</span></code><code class="sig-name descname"><span class="pre">PANNBPANDOCARGS</span></code><em class="property"><span class="pre">:</span> <span class="pre">list</span></em><em class="property"> <span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#pannb.PANNBPANDOCARGS" title="Permalink to this definition">¶</a></dt>
 <dd><p>specify extra pandoc args used when calling convert_text</p>
 </dd></dl>
 
@@ -156,12 +150,6 @@ markdown first because if exist, it is likely considered a source format to be c
 <code class="sig-prename descclassname"><span class="pre">pannb.</span></code><code class="sig-name descname"><span class="pre">main</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Doc</span> <span class="p"><span class="pre">|</span></span> <span class="pre">None</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Any</span><a class="reference internal" href="../../_modules/pannb/#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pannb.main" title="Permalink to this definition">¶</a></dt>
 <dd><p>a pandoc filter converting math in code block.</p>
 <p>Fenced code block with class math will be runned using texp.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt id="pannb.prepare">
-<code class="sig-prename descclassname"><span class="pre">pannb.</span></code><code class="sig-name descname"><span class="pre">prepare</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Doc</span> <span class="p"><span class="pre">|</span></span> <span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pannb.prepare" title="Permalink to this definition">¶</a></dt>
-<dd><p>Replace doc metadata with jupytext metadata.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -208,7 +196,7 @@ hence also remove that extra indentation.</p>
     </p>
     <p>
         &copy; Copyright 2021, Kolen Cheung.<br/>
-      Last updated on Dec 14, 2021.<br/>
+      Last updated on Dec 18, 2021.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
     </p>
   </div>
