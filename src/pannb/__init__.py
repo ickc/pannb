@@ -12,19 +12,9 @@ from panflute.tools import convert_text
 from .util import setup_logging
 
 if TYPE_CHECKING:
-    from typing import Any, Callable, Optional, Sequence, Union
+    from typing import Any
 
-    from panflute.elements import CodeBlock, Doc, Element
-
-    PANFLUTE_ACTION = Callable[[Element, Doc], Union[None, Element, list[Element]]]
-    PANFLUTE_PREPARE = Optional[Callable[[Doc], None]]
-    PANFLUTE_FINALIZE = PANFLUTE_PREPARE
-    # see https://panflute.readthedocs.io/en/latest/code.html?highlight=run_filters#panflute.io.run_filters
-    # PANFLUTE_FILTER can either be just an action, or a tuple of action, prepare, finalize
-    PANFLUTE_FILTER = Union[
-        PANFLUTE_ACTION,
-        tuple[Sequence[PANFLUTE_ACTION], PANFLUTE_PREPARE, PANFLUTE_FINALIZE],
-    ]
+    from panflute.elements import CodeBlock, Doc
 
 logger = setup_logging()
 
@@ -131,23 +121,20 @@ def remove_cell_input_python(
         return None
 
 
-actions: tuple[PANFLUTE_ACTION] = (
-    convert_cell_output,
-    remove_cell_input_python,
-    remove_code_cell_classes,
-)  # type: ignore[assignment] # type limitation
-prepare: PANFLUTE_PREPARE = prepare_jupytext_metadata
-finalize: PANFLUTE_FINALIZE = None
-#: equiv. to the texp cli, but provided as a Python interface
-FILTER: PANFLUTE_FILTER = (actions, prepare, finalize)
-
-
 def main(doc: Doc | None = None) -> Any:
     """a pandoc filter converting math in code block.
 
     Fenced code block with class math will be runned using texp.
     """
-    return run_filters(actions, prepare=prepare, finalize=finalize, doc=doc)
+    return run_filters(
+        (
+            convert_cell_output,
+            remove_cell_input_python,
+            remove_code_cell_classes,
+        ),
+        prepare=prepare_jupytext_metadata,
+        doc=doc,
+    )
 
 
 if __name__ == "__main__":
