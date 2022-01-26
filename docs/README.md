@@ -41,3 +41,13 @@ These 3 filters are implemented as 3 individual functions, so that you can cherr
 # Example
 
 See `docs/example.ipynb` for the input notebook and its `output without the filter </example>`{.interpreted-text role="doc"} and `output with the filter </example-output>`{.interpreted-text role="doc"}.
+
+# Supported pandoc versions
+
+pandoc versioning semantics is [MAJOR.MAJOR.MINOR.PATCH](https://pvp.haskell.org) and panflute's is MAJOR.MINOR.PATCH. Below we shows matching versions of pandoc that pannb supports, in descending order. Only major version is shown as long as the minor versions doesn't matter.
+
+| pannb | panflute version | supported pandoc versions | supported pandoc API versions |
+| ----- | ---------------- | ------------------------- | ----------------------------- |
+| 0.1.2 | 2.1.3            | 2.17.x                    | 1.22.1                        |
+| 0.1.1 | 2.1.3            | 2.15–2.16.x               | 1.22–1.22.1                   |
+| 0.1.0 | 2.1              | 2.11.2—2.14.x             | 1.22                          |
