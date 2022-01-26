@@ -35,7 +35,6 @@ dependencies:
   - ipykernel
   - pandas
   # dev:
-  - pantable >=0.14,<0.15
   - isort
   - mypy
   - bandit
