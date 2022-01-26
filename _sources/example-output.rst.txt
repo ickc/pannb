@@ -12,9 +12,9 @@ Pandoc filter for ipynb
 
    An example with some markdown texts.
 
-   Compare `source <../example/>`__ and `output <../example-output/>`__.
+   Compare :doc:`source </example>` and :doc:`output </example-output>`.
 
-   Below we'll write some Python code that will becomes invisible after
+   Below we’ll write some Python code that will becomes invisible after
    pannb filtering.
 
 .. container::
@@ -24,7 +24,7 @@ Pandoc filter for ipynb
    :name: d68cd8b4-a9a1-4b2b-85a3-2fa0c3ad9f35
 
    However, the HTML output of these cells should be visible, and
-   converted to pandoc's internal format.
+   converted to pandoc’s internal format.
 
    For example, the below table will be valid in LaTeX output.
 
