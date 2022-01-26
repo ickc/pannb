@@ -12,7 +12,7 @@ pannb—pandoc filter for ipynb
 
 |Documentation Status| |image1|
 
-|GitHub Actions| |Coverage Status| |image2| |Codacy Code Quality Status| |Scrutinizer Status| |CodeClimate Quality Status|
+|GitHub Actions| |Coverage Status| |image2| |Codacy Badge| |Scrutinizer Status| |CodeClimate Quality Status|
 
 |Supported versions| |Supported implementations| |PyPI Wheel| |PyPI Package latest release| |GitHub Releases| |Development Status| |Downloads| |Commits since latest release| |License|
 
@@ -45,8 +45,8 @@ See ``docs/example.ipynb`` for the input notebook and its `output without the fi
    :target: https://codecov.io/github/ickc/pannb
 .. |image2| image:: https://coveralls.io/repos/ickc/pannb/badge.svg?branch=master&service=github
    :target: https://coveralls.io/r/ickc/pannb
-.. |Codacy Code Quality Status| image:: https://img.shields.io/codacy/grade/078ebc537c5747f68c1d4ad3d3594bbf.svg
-   :target: https://www.codacy.com/app/ickc/pannb
+.. |Codacy Badge| image:: https://app.codacy.com/project/badge/Grade/7e7a6e8e440149aaa6358884efa941b0
+   :target: https://www.codacy.com/gh/ickc/pannb/dashboard?utm_source=github.com&utm_medium=referral&utm_content=ickc/pannb&utm_campaign=Badge_Grade
 .. |Scrutinizer Status| image:: https://img.shields.io/scrutinizer/quality/g/ickc/pannb/master.svg
    :target: https://scrutinizer-ci.com/g/ickc/pannb/
 .. |CodeClimate Quality Status| image:: https://codeclimate.com/github/ickc/pannb/badges/gpa.svg
