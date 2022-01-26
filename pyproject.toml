@@ -114,7 +114,7 @@ source = [
     'src',
     'tests',
 ]
-parallel = true
+parallel = false
 relative_files = true
 
 [tool.coverage.report]
