@@ -19,7 +19,7 @@ title:	pannb—pandoc filter for ipynb
 [![GitHub Releases](https://img.shields.io/github/tag/ickc/pannb.svg?label=github+release)](https://github.com/ickc/pannb/releases)
 [![Development Status](https://img.shields.io/pypi/status/pannb.svg)](https://pypi.python.org/pypi/pannb/)
 [![Downloads](https://img.shields.io/pypi/dm/pannb.svg)](https://pypi.python.org/pypi/pannb/)
-[![Commits since latest release](https://img.shields.io/github/commits-since/ickc/pannb/v0.1.2.svg)](https://github.com/ickc/pannb/compare/v0.1.2...master)
+[![Commits since latest release](https://img.shields.io/github/commits-since/ickc/pannb/v0.1.3.svg)](https://github.com/ickc/pannb/compare/v0.1.3...master)
 ![License](https://img.shields.io/pypi/l/pannb.svg)
 
 [![Conda Recipe](https://img.shields.io/badge/recipe-pannb-green.svg)](https://anaconda.org/conda-forge/pannb)

@@ -80,8 +80,8 @@ pandoc versioning semantics is `MAJOR.MAJOR.MINOR.PATCH <https://pvp.haskell.org
    :target: https://pypi.python.org/pypi/pannb/
 .. |Downloads| image:: https://img.shields.io/pypi/dm/pannb.svg
    :target: https://pypi.python.org/pypi/pannb/
-.. |Commits since latest release| image:: https://img.shields.io/github/commits-since/ickc/pannb/v0.1.2.svg
-   :target: https://github.com/ickc/pannb/compare/v0.1.2...master
+.. |Commits since latest release| image:: https://img.shields.io/github/commits-since/ickc/pannb/v0.1.3.svg
+   :target: https://github.com/ickc/pannb/compare/v0.1.3...master
 .. |License| image:: https://img.shields.io/pypi/l/pannb.svg
 .. |Conda Recipe| image:: https://img.shields.io/badge/recipe-pannb-green.svg
    :target: https://anaconda.org/conda-forge/pannb

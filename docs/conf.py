@@ -24,7 +24,7 @@ project = "pannb"
 year = "2021"
 author = "Kolen Cheung"
 copyright = f"{year}, {author}"
-version = release = "0.1.2"
+version = release = "0.1.3"
 
 pygments_style = "solarized-light"
 html_theme = "bootstrap"

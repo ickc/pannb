@@ -29,7 +29,7 @@ CONVERT_CELL_OUTPUT_PRIORITY = ("markdown", "html", "latex")
 #: specify extra pandoc args used when calling convert_text
 PANNBPANDOCARGS: list[str] = os.environ.get("PANNBPANDOCARGS", "").split()
 
-__version__: str = "0.1.2"
+__version__: str = "0.1.3"
 
 
 def prepare_jupytext_metadata(
