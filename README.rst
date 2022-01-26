@@ -4,27 +4,19 @@
 pannb—pandoc filter for ipynb
 =============================
 
-:Date:   November 30, 2021
+:Date:   January 25, 2022
 
 .. contents::
    :depth: 3
 ..
 
-+-------------+----------------------------------------------------------------------------------+
-| docs        | |Documentation Status| |image2|                                                  |
-+=============+==================================================================================+
-| tests       | |GitHub Actions| |Coverage Status|                                               |
-|             |                                                                                  |
-|             | |Codacy Code Quality Status| |Scrutinizer Status| |CodeClimate Quality Status|   |
-+-------------+----------------------------------------------------------------------------------+
-| package     | |Supported versions| |Supported implementations| |PyPI Wheel|                    |
-|             |                                                                                  |
-|             | |PyPI Package latest release| |GitHub Releases| |Development Status| |Downloads| |
-|             |                                                                                  |
-|             | |Commits since latest release| |License|                                         |
-+-------------+----------------------------------------------------------------------------------+
-| conda-forge | |Conda Recipe| |Conda Downloads| |Conda Version| |Conda Platforms|               |
-+-------------+----------------------------------------------------------------------------------+
+|Documentation Status| |image1|
+
+|GitHub Actions| |Coverage Status| |image2| |Codacy Code Quality Status| |Scrutinizer Status| |CodeClimate Quality Status|
+
+|Supported versions| |Supported implementations| |PyPI Wheel| |PyPI Package latest release| |GitHub Releases| |Development Status| |Downloads| |Commits since latest release| |License|
+
+|Conda Recipe| |Conda Downloads| |Conda Version| |Conda Platforms|
 
 Introduction
 ============
@@ -51,6 +43,8 @@ See ``docs/example.ipynb`` for the input notebook and its `output without the fi
 .. |GitHub Actions| image:: https://github.com/ickc/pannb/workflows/Python%20package/badge.svg
 .. |Coverage Status| image:: https://codecov.io/gh/ickc/pannb/branch/master/graphs/badge.svg?branch=master
    :target: https://codecov.io/github/ickc/pannb
+.. |image2| image:: https://coveralls.io/repos/ickc/pannb/badge.svg?branch=master&service=github
+   :target: https://coveralls.io/r/ickc/pannb
 .. |Codacy Code Quality Status| image:: https://img.shields.io/codacy/grade/078ebc537c5747f68c1d4ad3d3594bbf.svg
    :target: https://www.codacy.com/app/ickc/pannb
 .. |Scrutinizer Status| image:: https://img.shields.io/scrutinizer/quality/g/ickc/pannb/master.svg
@@ -82,5 +76,3 @@ See ``docs/example.ipynb`` for the input notebook and its `output without the fi
    :target: https://anaconda.org/conda-forge/pannb
 .. |Conda Platforms| image:: https://img.shields.io/conda/pn/conda-forge/pannb.svg
    :target: https://anaconda.org/conda-forge/pannb
-.. |image2| image:: https://github.com/ickc/pannb/workflows/GitHub%20Pages/badge.svg
-   :target: https://ickc.github.io/pannb
