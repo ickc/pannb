@@ -24,8 +24,11 @@ html: dist/docs/
 #  --parallel-mode
 test:
 	TEXPDEBUG=1 $(_python) \
-		-m coverage run --branch \
+		-m coverage run \
 		-m pytest -vv $(PYTESTARGS) tests
+coverage: test
+	coverage report
+	coverage html
 
 test-mpi:
 	mpirun -n $(N_MPI) $(_python) -m pytest -vv --with-mpia \
