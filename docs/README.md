@@ -36,11 +36,11 @@ Pandoc supports ipynb format. What this does is add support of
 3. convert raw block to native pandoc AST, e.g.
     - if a cell outputs HTML, then it is an HTML raw block by default, meaning only HTML-like output formats contains these output cells. This filter convert them using pandoc itself to native pandoc AST so that any output formats will contains the same output.
 
-These 3 filters are implemented as 3 individual functions, so that you can cherry-pick your own combinations (See `API doc </api/pannb>`{.interpreted-text role="doc"}). The command line program `pannb` have all 3 included.
+These 3 filters are implemented as 3 individual functions, so that you can cherry-pick your own combinations (See [API doc](https://ickc.github.io/pannb/api/pannb/)). The command line program `pannb` have all 3 included.
 
 # Example
 
-See `docs/example.ipynb` for the input notebook and its `output without the filter </example>`{.interpreted-text role="doc"} and `output with the filter </example-output>`{.interpreted-text role="doc"}.
+See [`docs/example.ipynb`](https://github.com/ickc/pannb/blob/master/docs/example.ipynb) for the input notebook and its [output without the filter](https://ickc.github.io/pannb/example/) and [output with the filter](https://ickc.github.io/pannb/example-output/).
 
 # Supported pandoc versions
 
