@@ -47,4 +47,5 @@ jobs:
         python -c 'import pannb'
     - name: Tests
       run: |
-        make test COVHTML='--cov-report=xml'
+        make test
+        coverage xml

@@ -25,7 +25,6 @@ dependencies:
   - coveralls
   # - flake8
   - pytest
-  - pytest-cov
   # - pytest-parallel
   # - pytest-xdist
   # docs:

@@ -53,7 +53,6 @@ coverage = { optional = true, version = "*" }
 coveralls = { optional = true, version = "*" }
 # flake8 = { optional = true, version = "*" }
 pytest = { optional = true, version = "*" }
-pytest-cov = { optional = true, version = "*" }
 # pytest-parallel = { optional = true, version = "*" }
 # pytest-xdist = { optional = true, version = "*" }
 
@@ -87,7 +86,6 @@ tests = [
     "coveralls",
     # "flake8",
     "pytest",
-    "pytest-cov",
     # "pytest-parallel",
     # "pytest-xdist",
 ]
