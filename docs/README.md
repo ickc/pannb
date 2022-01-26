@@ -40,7 +40,7 @@ These 3 filters are implemented as 3 individual functions, so that you can cherr
 
 # Example
 
-See [`docs/example.ipynb`](https://github.com/ickc/pannb/blob/master/docs/example.ipynb) for the input notebook and its [output without the filter](https://ickc.github.io/pannb/example/) and [output with the filter](https://ickc.github.io/pannb/example-output/).
+See [example.ipynb](https://github.com/ickc/pannb/blob/master/docs/example.ipynb) for the input notebook and its [output without the filter](https://ickc.github.io/pannb/example/) and [output with the filter](https://ickc.github.io/pannb/example-output/).
 
 # Supported pandoc versions
 
