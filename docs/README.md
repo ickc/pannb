@@ -8,7 +8,7 @@ title:	pannb—pandoc filter for ipynb
 ![GitHub Actions](https://github.com/ickc/pannb/workflows/Python%20package/badge.svg)
 [![Coverage Status](https://codecov.io/gh/ickc/pannb/branch/master/graphs/badge.svg?branch=master)](https://codecov.io/github/ickc/pannb)
 [![Coverage Status](https://coveralls.io/repos/ickc/pannb/badge.svg?branch=master&service=github)](https://coveralls.io/r/ickc/pannb)
-[![Codacy Code Quality Status](https://img.shields.io/codacy/grade/078ebc537c5747f68c1d4ad3d3594bbf.svg)](https://www.codacy.com/app/ickc/pannb)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/7e7a6e8e440149aaa6358884efa941b0)](https://www.codacy.com/gh/ickc/pannb/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ickc/pannb&amp;utm_campaign=Badge_Grade)
 [![Scrutinizer Status](https://img.shields.io/scrutinizer/quality/g/ickc/pannb/master.svg)](https://scrutinizer-ci.com/g/ickc/pannb/)
 [![CodeClimate Quality Status](https://codeclimate.com/github/ickc/pannb/badges/gpa.svg)](https://codeclimate.com/github/ickc/pannb)
 
