@@ -19,7 +19,7 @@ dependencies:
   - panflute >=2.1.3,<3
   # run_constrained:
   - coloredlogs >=14,<16
-  - pandoc >=2.15,<2.17
+  - pandoc >=2.17,<2.18
   # tests:
   - coverage
   - coveralls
