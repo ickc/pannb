@@ -1,6 +1,6 @@
 readme.rst:15: [redirected with Found] https://codeclimate.com/github/ickc/pannb/badges/gpa.svg to https://api.codeclimate.com/v1/badges/2a7ea45682b4d61c2068/maintainability.svg
-readme.rst:15: [redirected with Found] https://coveralls.io/repos/ickc/pannb/badge.svg?branch=master&service=github to https://s3.amazonaws.com/assets.coveralls.io/badges/coveralls_unknown.svg
 readme.rst:15: [redirected permanently] https://coveralls.io/r/ickc/pannb to https://coveralls.io/github/ickc/pannb
+readme.rst:15: [redirected with Found] https://coveralls.io/repos/ickc/pannb/badge.svg?branch=master&service=github to https://s3.amazonaws.com/assets.coveralls.io/badges/coveralls_unknown.svg
 readme.rst:17: [redirected permanently] https://img.shields.io/github/tag/ickc/pannb.svg?label=github+release to https://img.shields.io/github/v/tag/ickc/pannb.svg?label=github%20release&sort=semver
 readme.rst:17: [redirected permanently] https://pypi.python.org/pypi/pannb/ to https://pypi.org/project/pannb/
 authors.rst:5: [redirected with Found] https://pannb.readthedocs.io/ to https://pannb.readthedocs.io/en/latest/

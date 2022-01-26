@@ -1,44 +1,44 @@
 {"filename": "example.ipynb", "lineno": 34, "status": "unchecked", "code": 0, "uri": "", "info": ""}
 {"filename": "readme.rst", "lineno": 15, "status": "working", "code": 0, "uri": "https://codecov.io/gh/ickc/pannb/branch/master/graphs/badge.svg?branch=master", "info": ""}
-{"filename": "readme.rst", "lineno": 19, "status": "working", "code": 0, "uri": "https://anaconda.org/conda-forge/pannb", "info": ""}
 {"filename": "readme.rst", "lineno": 15, "status": "working", "code": 0, "uri": "https://codeclimate.com/github/ickc/pannb", "info": ""}
-{"filename": "readme.rst", "lineno": 15, "status": "working", "code": 0, "uri": "https://app.codacy.com/project/badge/Grade/7e7a6e8e440149aaa6358884efa941b0", "info": ""}
+{"filename": "readme.rst", "lineno": 19, "status": "working", "code": 0, "uri": "https://anaconda.org/conda-forge/pannb", "info": ""}
 {"filename": "readme.rst", "lineno": 15, "status": "working", "code": 0, "uri": "https://codecov.io/github/ickc/pannb", "info": ""}
 {"filename": "readme.rst", "lineno": 15, "status": "redirected", "code": 302, "uri": "https://codeclimate.com/github/ickc/pannb/badges/gpa.svg", "info": "https://api.codeclimate.com/v1/badges/2a7ea45682b4d61c2068/maintainability.svg", "text": "with Found"}
-{"filename": "readme.rst", "lineno": 15, "status": "redirected", "code": 302, "uri": "https://coveralls.io/repos/ickc/pannb/badge.svg?branch=master&service=github", "info": "https://s3.amazonaws.com/assets.coveralls.io/badges/coveralls_unknown.svg", "text": "with Found"}
+{"filename": "readme.rst", "lineno": 15, "status": "working", "code": 0, "uri": "https://app.codacy.com/project/badge/Grade/7e7a6e8e440149aaa6358884efa941b0", "info": ""}
 {"filename": "readme.rst", "lineno": 15, "status": "redirected", "code": 301, "uri": "https://coveralls.io/r/ickc/pannb", "info": "https://coveralls.io/github/ickc/pannb", "text": "permanently"}
-{"filename": "readme.rst", "lineno": 37, "status": "working", "code": 0, "uri": "https://github.com/ickc/pannb/blob/master/docs/example.ipynb", "info": ""}
-{"filename": "readme.rst", "lineno": 17, "status": "working", "code": 0, "uri": "https://github.com/ickc/pannb/compare/v0.1.3...master", "info": ""}
+{"filename": "readme.rst", "lineno": 15, "status": "redirected", "code": 302, "uri": "https://coveralls.io/repos/ickc/pannb/badge.svg?branch=master&service=github", "info": "https://s3.amazonaws.com/assets.coveralls.io/badges/coveralls_unknown.svg", "text": "with Found"}
 {"filename": "contributing.rst", "lineno": 11, "status": "working", "code": 0, "uri": "https://github.com/ickc/pannb/issues", "info": ""}
+{"filename": "readme.rst", "lineno": 37, "status": "working", "code": 0, "uri": "https://github.com/ickc/pannb/blob/master/docs/example.ipynb", "info": ""}
+{"filename": "contributing.rst", "lineno": 40, "status": "working", "code": 0, "uri": "https://github.com/ickc/pannb", "info": ""}
+{"filename": "readme.rst", "lineno": 17, "status": "working", "code": 0, "uri": "https://github.com/ickc/pannb/compare/v0.1.3...master", "info": ""}
 {"filename": "readme.rst", "lineno": 13, "status": "working", "code": 0, "uri": "https://github.com/ickc/pannb/workflows/GitHub%20Pages/badge.svg", "info": ""}
 {"filename": "readme.rst", "lineno": 58, "status": "working", "code": 0, "uri": "https://github.com/ickc/pannb/workflows/Python%20package/badge.svg", "info": ""}
-{"filename": "contributing.rst", "lineno": 40, "status": "working", "code": 0, "uri": "https://github.com/ickc/pannb", "info": ""}
-{"filename": "readme.rst", "lineno": 13, "status": "working", "code": 0, "uri": "https://ickc.github.io/pannb", "info": ""}
-{"filename": "readme.rst", "lineno": 17, "status": "working", "code": 0, "uri": "https://github.com/ickc/pannb/releases", "info": ""}
 {"filename": "readme.rst", "lineno": 32, "status": "working", "code": 0, "uri": "https://ickc.github.io/pannb/api/pannb/", "info": ""}
-{"filename": "readme.rst", "lineno": 37, "status": "working", "code": 0, "uri": "https://ickc.github.io/pannb/example/", "info": ""}
+{"filename": "readme.rst", "lineno": 13, "status": "working", "code": 0, "uri": "https://ickc.github.io/pannb", "info": ""}
 {"filename": "readme.rst", "lineno": 37, "status": "working", "code": 0, "uri": "https://ickc.github.io/pannb/example-output/", "info": ""}
+{"filename": "readme.rst", "lineno": 37, "status": "working", "code": 0, "uri": "https://ickc.github.io/pannb/example/", "info": ""}
 {"filename": "readme.rst", "lineno": 19, "status": "working", "code": 0, "uri": "https://img.shields.io/badge/recipe-pannb-green.svg", "info": ""}
-{"filename": "readme.rst", "lineno": 19, "status": "working", "code": 0, "uri": "https://img.shields.io/conda/pn/conda-forge/pannb.svg", "info": ""}
+{"filename": "readme.rst", "lineno": 19, "status": "working", "code": 0, "uri": "https://img.shields.io/conda/dn/conda-forge/pannb.svg", "info": ""}
+{"filename": "readme.rst", "lineno": 17, "status": "working", "code": 0, "uri": "https://github.com/ickc/pannb/releases", "info": ""}
 {"filename": "readme.rst", "lineno": 19, "status": "working", "code": 0, "uri": "https://img.shields.io/conda/vn/conda-forge/pannb.svg", "info": ""}
 {"filename": "readme.rst", "lineno": 17, "status": "working", "code": 0, "uri": "https://img.shields.io/github/commits-since/ickc/pannb/v0.1.3.svg", "info": ""}
-{"filename": "readme.rst", "lineno": 19, "status": "working", "code": 0, "uri": "https://img.shields.io/conda/dn/conda-forge/pannb.svg", "info": ""}
-{"filename": "changelog.rst", "lineno": 21, "status": "working", "code": 0, "uri": "https://github.com/jgm/pandoc/releases/tag/2.15", "info": ""}
 {"filename": "readme.rst", "lineno": 17, "status": "working", "code": 0, "uri": "https://img.shields.io/pypi/dm/pannb.svg", "info": ""}
-{"filename": "readme.rst", "lineno": 17, "status": "redirected", "code": 301, "uri": "https://img.shields.io/github/tag/ickc/pannb.svg?label=github+release", "info": "https://img.shields.io/github/v/tag/ickc/pannb.svg?label=github%20release&sort=semver", "text": "permanently"}
+{"filename": "readme.rst", "lineno": 19, "status": "working", "code": 0, "uri": "https://img.shields.io/conda/pn/conda-forge/pannb.svg", "info": ""}
 {"filename": "readme.rst", "lineno": 17, "status": "working", "code": 0, "uri": "https://img.shields.io/pypi/implementation/pannb.svg", "info": ""}
 {"filename": "readme.rst", "lineno": 85, "status": "working", "code": 0, "uri": "https://img.shields.io/pypi/l/pannb.svg", "info": ""}
-{"filename": "readme.rst", "lineno": 17, "status": "working", "code": 0, "uri": "https://img.shields.io/pypi/pyversions/pannb.svg", "info": ""}
-{"filename": "readme.rst", "lineno": 17, "status": "working", "code": 0, "uri": "https://img.shields.io/pypi/status/pannb.svg", "info": ""}
-{"filename": "readme.rst", "lineno": 17, "status": "working", "code": 0, "uri": "https://img.shields.io/pypi/v/pannb.svg", "info": ""}
-{"filename": "readme.rst", "lineno": 17, "status": "working", "code": 0, "uri": "https://img.shields.io/pypi/wheel/pannb.svg", "info": ""}
-{"filename": "readme.rst", "lineno": 15, "status": "working", "code": 0, "uri": "https://img.shields.io/scrutinizer/quality/g/ickc/pannb/master.svg", "info": ""}
 {"filename": "changelog.rst", "lineno": 16, "status": "working", "code": 0, "uri": "https://github.com/jgm/pandoc/releases/tag/2.17", "info": ""}
+{"filename": "readme.rst", "lineno": 17, "status": "working", "code": 0, "uri": "https://img.shields.io/pypi/pyversions/pannb.svg", "info": ""}
+{"filename": "changelog.rst", "lineno": 21, "status": "working", "code": 0, "uri": "https://github.com/jgm/pandoc/releases/tag/2.15", "info": ""}
+{"filename": "readme.rst", "lineno": 17, "status": "working", "code": 0, "uri": "https://img.shields.io/pypi/v/pannb.svg", "info": ""}
+{"filename": "readme.rst", "lineno": 17, "status": "working", "code": 0, "uri": "https://img.shields.io/pypi/status/pannb.svg", "info": ""}
+{"filename": "readme.rst", "lineno": 17, "status": "working", "code": 0, "uri": "https://img.shields.io/pypi/wheel/pannb.svg", "info": ""}
+{"filename": "readme.rst", "lineno": 17, "status": "redirected", "code": 301, "uri": "https://img.shields.io/github/tag/ickc/pannb.svg?label=github+release", "info": "https://img.shields.io/github/v/tag/ickc/pannb.svg?label=github%20release&sort=semver", "text": "permanently"}
+{"filename": "readme.rst", "lineno": 15, "status": "working", "code": 0, "uri": "https://img.shields.io/scrutinizer/quality/g/ickc/pannb/master.svg", "info": ""}
 {"filename": "readme.rst", "lineno": 17, "status": "working", "code": 0, "uri": "https://pypi.org/project/pannb", "info": ""}
 {"filename": "readme.rst", "lineno": 42, "status": "working", "code": 0, "uri": "https://pvp.haskell.org", "info": ""}
-{"filename": "readme.rst", "lineno": 13, "status": "working", "code": 0, "uri": "https://pannb.readthedocs.io/en/latest/?badge=latest&style=plastic", "info": ""}
 {"filename": "readme.rst", "lineno": 17, "status": "redirected", "code": 301, "uri": "https://pypi.python.org/pypi/pannb/", "info": "https://pypi.org/project/pannb/", "text": "permanently"}
-{"filename": "authors.rst", "lineno": 5, "status": "redirected", "code": 302, "uri": "https://pannb.readthedocs.io/", "info": "https://pannb.readthedocs.io/en/latest/", "text": "with Found"}
+{"filename": "readme.rst", "lineno": 13, "status": "working", "code": 0, "uri": "https://pannb.readthedocs.io/en/latest/?badge=latest&style=plastic", "info": ""}
 {"filename": "readme.rst", "lineno": 13, "status": "working", "code": 0, "uri": "https://readthedocs.org/projects/pannb/badge/?version=latest", "info": ""}
+{"filename": "authors.rst", "lineno": 5, "status": "redirected", "code": 302, "uri": "https://pannb.readthedocs.io/", "info": "https://pannb.readthedocs.io/en/latest/", "text": "with Found"}
 {"filename": "readme.rst", "lineno": 15, "status": "redirected", "code": 301, "uri": "https://www.codacy.com/gh/ickc/pannb/dashboard?utm_source=github.com&utm_medium=referral&utm_content=ickc/pannb&utm_campaign=Badge_Grade", "info": "https://app.codacy.com/gh/ickc/pannb/dashboard?utm_source=github.com&utm_medium=referral&utm_content=ickc/pannb&utm_campaign=Badge_Grade", "text": "permanently"}
 {"filename": "readme.rst", "lineno": 15, "status": "working", "code": 0, "uri": "https://scrutinizer-ci.com/g/ickc/pannb/", "info": ""}
