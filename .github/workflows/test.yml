@@ -13,7 +13,8 @@ jobs:
           - python-version: "3.10"
             pandoc-version: "3.1.1"
           - python-version: "3.13"
-            pandoc-version: "latest"
+            # empty: the latest release
+            pandoc-version: ""
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-python@v5
