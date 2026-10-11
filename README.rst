@@ -34,7 +34,7 @@ These 3 filters are implemented as 3 individual functions, so that you can cherr
 Example
 =======
 
-See ```docs/example.ipynb`` <https://github.com/ickc/pannb/blob/master/docs/example.ipynb>`__ for the input notebook and its `output without the filter <https://ickc.github.io/pannb/example/>`__ and `output with the filter <https://ickc.github.io/pannb/example-output/>`__.
+See ```docs/example.ipynb`` <https://github.com/ickc/pannb/blob/main/docs/example.ipynb>`__ for the input notebook and its `output without the filter <https://ickc.github.io/pannb/example/>`__ and `output with the filter <https://ickc.github.io/pannb/example-output/>`__.
 
 Supported pandoc versions
 =========================
@@ -56,13 +56,13 @@ pandoc versioning semantics is `MAJOR.MAJOR.MINOR.PATCH <https://pvp.haskell.org
 .. |image1| image:: https://github.com/ickc/pannb/workflows/GitHub%20Pages/badge.svg
    :target: https://ickc.github.io/pannb
 .. |GitHub Actions| image:: https://github.com/ickc/pannb/workflows/Python%20package/badge.svg
-.. |Coverage Status| image:: https://codecov.io/gh/ickc/pannb/branch/master/graphs/badge.svg?branch=master
+.. |Coverage Status| image:: https://codecov.io/gh/ickc/pannb/branch/main/graphs/badge.svg?branch=main
    :target: https://codecov.io/github/ickc/pannb
-.. |image2| image:: https://coveralls.io/repos/ickc/pannb/badge.svg?branch=master&service=github
+.. |image2| image:: https://coveralls.io/repos/ickc/pannb/badge.svg?branch=main&service=github
    :target: https://coveralls.io/r/ickc/pannb
 .. |Codacy Badge| image:: https://app.codacy.com/project/badge/Grade/7e7a6e8e440149aaa6358884efa941b0
    :target: https://www.codacy.com/gh/ickc/pannb/dashboard?utm_source=github.com&utm_medium=referral&utm_content=ickc/pannb&utm_campaign=Badge_Grade
-.. |Scrutinizer Status| image:: https://img.shields.io/scrutinizer/quality/g/ickc/pannb/master.svg
+.. |Scrutinizer Status| image:: https://img.shields.io/scrutinizer/quality/g/ickc/pannb/main.svg
    :target: https://scrutinizer-ci.com/g/ickc/pannb/
 .. |CodeClimate Quality Status| image:: https://codeclimate.com/github/ickc/pannb/badges/gpa.svg
    :target: https://codeclimate.com/github/ickc/pannb
@@ -81,7 +81,7 @@ pandoc versioning semantics is `MAJOR.MAJOR.MINOR.PATCH <https://pvp.haskell.org
 .. |Downloads| image:: https://img.shields.io/pypi/dm/pannb.svg
    :target: https://pypi.python.org/pypi/pannb/
 .. |Commits since latest release| image:: https://img.shields.io/github/commits-since/ickc/pannb/v0.1.3.svg
-   :target: https://github.com/ickc/pannb/compare/v0.1.3...master
+   :target: https://github.com/ickc/pannb/compare/v0.1.3...main
 .. |License| image:: https://img.shields.io/pypi/l/pannb.svg
 .. |Conda Recipe| image:: https://img.shields.io/badge/recipe-pannb-green.svg
    :target: https://anaconda.org/conda-forge/pannb
