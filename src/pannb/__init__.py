@@ -137,5 +137,17 @@ def main(doc: Doc | None = None) -> Any:
     )
 
 
+def keep_inputs(doc: Doc | None = None) -> Any:
+    """As :func:`main`, but keeping the inputs of Python cells."""
+    return run_filters(
+        (
+            convert_cell_output,
+            remove_code_cell_classes,
+        ),
+        prepare=prepare_jupytext_metadata,
+        doc=doc,
+    )
+
+
 if __name__ == "__main__":
     main()
